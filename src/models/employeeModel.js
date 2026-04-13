@@ -42,7 +42,7 @@ const employeeSchema = new mongoose.Schema({
     },
     employmentStatus: {
         type: String,
-        enum: ['ACTIVE','INACTIVE'],
+        enum: ['ACTIVE', 'INACTIVE'],
         default: 'ACTIVE'
     },
     joinDate: {
@@ -61,7 +61,7 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         enum: DEPARTMENTS
     }
-},{timestamps: true})
+}, { timestamps: true })
 
 const Employee = mongoose.models.Employee || mongoose.model('Employee', employeeSchema)
 

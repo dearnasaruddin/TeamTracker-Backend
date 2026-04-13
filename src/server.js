@@ -6,6 +6,7 @@ import dbConfig from './config/databaseConfig.js';
 import authRouter from './routes/authRoutes.js';
 import employeeRouter from './routes/employeeRouts.js';
 import profileRouter from './routes/profileRoutes.js';
+import attendanceRouter from './routes/attendanceRoutes.js';
 
 dotenv.config()
 
@@ -22,6 +23,7 @@ app.use(multer().none())
 app.use('/api/auth', authRouter)
 app.use('/api/employee', employeeRouter)
 app.use('/api/profile', profileRouter)
+app.use('/api/attendance', attendanceRouter)
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
