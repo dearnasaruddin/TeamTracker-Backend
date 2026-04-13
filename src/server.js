@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 import cors from 'cors'
 import multer from 'multer'
 import dbConfig from './config/databaseConfig.js';
+import authRouter from './routes/authRoutes.js';
+import employeeRouter from './routes/employeeRouts.js';
+import profileRouter from './routes/profileRoutes.js';
 
 dotenv.config()
 
@@ -15,6 +18,10 @@ app.use(cors())
 app.use(express.json())
 app.use(multer().none())
 
+// ======== Routes ==========
+app.use('/api/auth', authRouter)
+app.use('/api/employee', employeeRouter)
+app.use('/api/profile', profileRouter)
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
