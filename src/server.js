@@ -8,6 +8,7 @@ import employeeRouter from './routes/employeeRouts.js';
 import profileRouter from './routes/profileRoutes.js';
 import attendanceRouter from './routes/attendanceRoutes.js';
 import leaveRouter from './routes/leaveRouters.js';
+import payslipRouter from './routes/payslipsRoutes.js';
 
 dotenv.config()
 
@@ -26,6 +27,7 @@ app.use('/api/employee', employeeRouter)
 app.use('/api/profile', profileRouter)
 app.use('/api/attendance', attendanceRouter)
 app.use('/api/leave', leaveRouter)
+app.use('/api/payslips', payslipRouter)
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
