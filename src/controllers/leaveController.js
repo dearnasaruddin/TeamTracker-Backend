@@ -120,7 +120,7 @@ export const updateLeaveStatusController = async (req, res) => {
                 error: 'Invalid status'
             })
         }
-        const leave = await LeaveApplication.findByIdAndDelete(req.params.id, {status}, {returnDocument: 'after'})
+        const leave = await LeaveApplication.findByIdAndUpdate(req.params.id, { status }, { returnDocument: 'after' })
         return res.status(200).json({
             success: true,
             data: leave

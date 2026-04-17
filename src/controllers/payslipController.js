@@ -7,7 +7,7 @@ import Payslip from "../models/payslipModel.js"
 export const createPayslipController = async (req, res) => {
     try {
         const { employeeId, month, year, basicSalary, allowances, deductions } = req.body
-        if (!employeeId || !month | !year || !basicSalary) {
+        if (!employeeId || !month || !year || !basicSalary) {
             return res.status(400).json({
                 error: 'Missing fields'
             })

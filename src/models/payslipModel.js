@@ -25,8 +25,12 @@ const payslipSchema = new mongoose.Schema({
     deductions: {
         type: Number,
         default: 0
+    },
+    netSalary: {
+        type: Number,
+        required: true
     }
-}, {timestamps: true})
+}, { timestamps: true })
 
 const Payslip = mongoose.models.Payslip || mongoose.model('Payslip', payslipSchema)
 

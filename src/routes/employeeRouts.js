@@ -1,12 +1,12 @@
 import { Router } from 'express'
 import { createEmployeesController, deleteEmployeesController, getEmployeesController, updateEmployeesController } from '../controllers/employeeController.js'
-import { protectAdminMiddleware } from '../middlewares/authMiddleware.js'
+import { protectAdminMiddleware, protectUserMiddleware } from '../middlewares/authMiddleware.js'
 
 const employeeRouter = Router()
 
-employeeRouter.get('/', protectAdminMiddleware, getEmployeesController)
-employeeRouter.post('/', protectAdminMiddleware, createEmployeesController)
-employeeRouter.put('/:id', protectAdminMiddleware, updateEmployeesController)
-employeeRouter.delete('/:id', protectAdminMiddleware, deleteEmployeesController)
+employeeRouter.get('/', protectUserMiddleware, protectAdminMiddleware, getEmployeesController)
+employeeRouter.post('/', protectUserMiddleware, protectAdminMiddleware, createEmployeesController)
+employeeRouter.put('/:id', protectUserMiddleware, protectAdminMiddleware, updateEmployeesController)
+employeeRouter.delete('/:id', protectUserMiddleware, protectAdminMiddleware, deleteEmployeesController)
 
 export default employeeRouter

@@ -10,7 +10,7 @@ import { DEPARTMENTS } from "../constansts/departments.js";
 export const getDashboardController = async (req, res)=>{
     try {
         const session = req.session
-        if(session.role === 'Admin'){
+        if(session.role === 'ADMIN'){
             const [totalEmployees, totalAttendance, pendingLeaves] = await Promise.all([
                 Employee.countDocuments({isDeleted: {$ne: true}}),
                 Attendance.countDocuments({

@@ -4,7 +4,7 @@ import User from '../models/userModel.js'
 
 
 // ================ Get Employee ================
-// GET /api/employees
+// GET /api/employee
 export const getEmployeesController = async (req, res) => {
     try {
         const { department } = req.query
@@ -20,7 +20,7 @@ export const getEmployeesController = async (req, res) => {
             ...emp,
             id: emp._id.toString(),
             user: emp.userId ? {
-                email: emp.userID.email,
+                email: emp.userId.email,
                 role: emp.userId.role
             } : null
         }))
@@ -37,11 +37,11 @@ export const getEmployeesController = async (req, res) => {
 
 
 // ================ Create Employee ================
-// POST /api/employees
+// POST /api/employee
 export const createEmployeesController = async (req, res) => {
+
     try {
         const { firstName, lastName, email, phone, position, department, basicSalary, allowances, deductions, joinDate, password, role, bio } = req.body
-
         if (!email || !password || !firstName || !lastName) {
             return res.status(400).json({
                 error: 'Missing required fields'
@@ -56,7 +56,7 @@ export const createEmployeesController = async (req, res) => {
         })
 
         const employee = await Employee.create({
-            userID: user._id,
+            userId: user._id,
             firstName,
             lastName,
             email,
@@ -93,7 +93,7 @@ export const createEmployeesController = async (req, res) => {
 
 
 // ================ Update Employee ================
-// PUT /api/employees/:id
+// PUT /api/employee/:id
 export const updateEmployeesController = async (req, res) => {
     try {
         const { id } = req.params
@@ -148,7 +148,7 @@ export const updateEmployeesController = async (req, res) => {
 
 
 // ================ Delete Employee ================
-// DELETE /api/employees/:id
+// DELETE /api/employee/:id
 export const deleteEmployeesController = async (req, res) => {
     try {
         const { id } = req.params

@@ -46,7 +46,7 @@ export const loginController = async (req, res) => {
             email: user.email
         }
 
-        const token = jwt.sign(payload, process.env.JWT - SECRET, { expiresIn: '7d' })
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' })
 
         return res.status(200).json({ user: payload, token })
 

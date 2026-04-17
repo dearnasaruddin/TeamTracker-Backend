@@ -102,13 +102,13 @@ export const getAttendanceController = async (req, res) => {
             })
         }
         const limit = parseInt(req.query.limit || 30)
-        const history = await Attendance.find({employeeId: employee._id})
-        .short({date: -1})
-        .limit(limit)
+        const history = await Attendance.find({ employeeId: employee._id })
+            .sort({ date: -1 })
+            .limit(limit)
 
         return res.status(200).json({
             data: history,
-            employee: {isDeleted: employee.isDeleted}
+            employee: { isDeleted: employee.isDeleted }
         })
     } catch (error) {
         return res.status(500).json({
